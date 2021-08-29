@@ -20,7 +20,7 @@ export const RequestParams = {
     auth: 'https://customer.bmwgroup.cn/gcdm',
     authorization: 'Basic blF2NkNxdHhKdVhXUDc0eGYzQ0p3VUVQOjF6REh4NnVuNGNEanliTEVOTjNreWZ1bVgya0VZaWdXUGNRcGR2RFJwSUJrN3JPSg==',
   },
-};
+} as const;
 
 export const SERVICE_TYPE = {
   LIGHT_FLASH: 'LIGHT_FLASH',
@@ -29,4 +29,4 @@ export const SERVICE_TYPE = {
   DOOR_UNLOCK: 'DOOR_UNLOCK',
   HORN_BLOW: 'HORN_BLOW',
   CLIMATE_NOW: 'CLIMATE_NOW',
-};
+} as const;
