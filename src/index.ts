@@ -10,6 +10,7 @@ import { Regions } from './constants';
       username: process.env.CONNECTED_USERNAME!,
       password: process.env.CONNECTED_PASSWORD!,
       region: Regions.REST_OF_WORLD,
+      debug: true,
     };
     const bmw = new BMW(opts);
     await bmw.authenticate();
