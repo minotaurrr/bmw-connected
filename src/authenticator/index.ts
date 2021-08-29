@@ -3,12 +3,6 @@ import dayjs from 'dayjs';
 import axios from 'axios';
 import { RequestParams } from 'src/constants';
 
-interface AuthOptions {
-  region: Region;
-  username: string;
-  password: string;
-}
-
 class Authenticator {
   public region: Region;
   private username: string;
@@ -20,14 +14,14 @@ class Authenticator {
     this.password = password;
   }
 
-  async getAccessToken() {
+  async getAccessToken(): Promise<Authentication> {
     const values = {
       scope: 'authenticate_user vehicle_data remote_services',
       grant_type: 'password',
       username: this.username,
       password: this.password,
     };
-    const url = `${this.getRequestParams().auth}/oauth/token`;
+    const url = this.getRequestParams().token;
     const data = querystring.stringify(values);
     const headers = this.getOAuthHeaders();
     const res = await axios.post(url, data, { headers });
@@ -42,9 +36,7 @@ class Authenticator {
   getOAuthHeaders() {
     const { auth, authorization } = this.getRequestParams();
     const headers = {
-      Credentials: 'nQv6CqtxJuXWP74xf3CJwUEP:1zDHx6un4cDjybLENN3kyfumX2kEYigWPcQpdvDRpIBk7rOJ',
-      'Accept-Encoding': 'gzip',
-      'Content-Length': '121',
+      Accept: 'application/json, text/plain, */*',
       'Content-Type': 'application/x-www-form-urlencoded',
       Host: new URL(auth).hostname,
       Authorization: authorization,

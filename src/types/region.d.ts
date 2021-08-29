@@ -1,1 +1,1 @@
-type Region = 'NORTH_AMERICA' | 'REST_OF_WORLD' | 'CHINA';
+declare type Region = 'NORTH_AMERICA' | 'REST_OF_WORLD' | 'CHINA';

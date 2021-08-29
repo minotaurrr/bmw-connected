@@ -1,13 +1,21 @@
-// export const getBaseURL = (region: Region) => URL[region].base;
+import { RequestParams } from 'src/constants';
 
-// export const getAuthURL = (region) => URL[region].auth;
+export const getBaseURL = (region: Region) => RequestParams[region].base;
 
-// export const getAuthorization = (region) => URL[region].authorization;
+export const getAuthURL = (region: Region) => RequestParams[region].auth;
 
-// export const getVehicleURL = (region) => `${getBaseURL(region)}/user/vehicles`;
+export const getAuthorization = (region: Region) => RequestParams[region].authorization;
 
-// export const getVehicleVinURL = (region, vin) => `${getVehicleURL(region)}/${vin}`;
+export const getVehicleURL = (region: Region) => `${getBaseURL(region)}/user/vehicles`;
 
-// export const getVehicleStatusURL = (region, vin) => `${getVehicleVinURL(region, vin)}/status`;
+export const getVehicleVinURL = (region: Region, vin: string) => `${getVehicleURL(region)}/${vin}`;
 
-// export const remoteServiceURL = (region, vin) => `${getVehicleVinURL(region, vin)}/executeService`;
+export const getVehicleStatusURL = (region: Region, vin: string) => `${getVehicleVinURL(region, vin)}/status`;
+
+export const remoteServiceURL = (region: Region, vin: string) => `${getVehicleVinURL(region, vin)}/executeService`;
+
+export const getRequestHeaders = (token: string) => ({
+  accept: 'application/json',
+  Authorization: `Bearer ${token}`,
+  referer: 'https://www.bmw-connecteddrive.de/app/index.html',
+});
