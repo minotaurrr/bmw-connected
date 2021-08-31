@@ -26,7 +26,11 @@ class Authenticator {
     const headers = this.getOAuthHeaders();
     const res = await axios.post(url, data, { headers });
 
-    return { token: res.data.access_token, retrievedAt: dayjs().toISOString(), expiresIn: res.data.expires_in };
+    return {
+      token: res.data.access_token,
+      retrievedAt: dayjs().toISOString(),
+      expiresIn: res.data.expires_in,
+    };
   }
 
   getRequestParams() {
@@ -41,7 +45,7 @@ class Authenticator {
       Host: new URL(auth).hostname,
       Authorization: authorization,
     };
-  
+
     return headers;
   }
 }

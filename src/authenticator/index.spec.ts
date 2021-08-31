@@ -37,7 +37,8 @@ describe('Authenticator', () => {
         base: 'https://b2vapi.bmwgroup.us/webapi/v1',
         auth: 'https://b2vapi.bmwgroup.us/gcdm/oauth/authenticate',
         token: 'https://b2vapi.bmwgroup.us/gcdm/oauth/token',
-        authorization: 'Basic NTQzOTRhNGItYjZjMS00NWZlLWI3YjItOGZkM2FhOTI1M2FhOmQ5MmYzMWMwLWY1NzktNDRmNS1hNzdkLTk2NmY4ZjAwZTM1MQ==',
+        authorization:
+          'Basic NTQzOTRhNGItYjZjMS00NWZlLWI3YjItOGZkM2FhOTI1M2FhOmQ5MmYzMWMwLWY1NzktNDRmNS1hNzdkLTk2NmY4ZjAwZTM1MQ==',
       };
       expect(params).toEqual(expected);
     });
@@ -55,7 +56,8 @@ describe('Authenticator', () => {
         base: 'https://b2vapi.bmwgroup.com/webapi/v1',
         auth: 'https://customer.bmwgroup.com/gcdm/oauth/authenticate',
         token: 'https://customer.bmwgroup.com/gcdm/oauth/token',
-        authorization: 'Basic MzFjMzU3YTAtN2ExZC00NTkwLWFhOTktMzNiOTcyNDRkMDQ4OmMwZTMzOTNkLTcwYTItNGY2Zi05ZDNjLTg1MzBhZjY0ZDU1Mg==',
+        authorization:
+          'Basic MzFjMzU3YTAtN2ExZC00NTkwLWFhOTktMzNiOTcyNDRkMDQ4OmMwZTMzOTNkLTcwYTItNGY2Zi05ZDNjLTg1MzBhZjY0ZDU1Mg==',
       };
       expect(params).toEqual(expected);
     });
@@ -71,7 +73,8 @@ describe('Authenticator', () => {
       authenticator = new Authenticator(opts);
       const headers = authenticator.getOAuthHeaders();
       expect(headers).toEqual({
-        Authorization: 'Basic MzFjMzU3YTAtN2ExZC00NTkwLWFhOTktMzNiOTcyNDRkMDQ4OmMwZTMzOTNkLTcwYTItNGY2Zi05ZDNjLTg1MzBhZjY0ZDU1Mg==',
+        Authorization:
+          'Basic MzFjMzU3YTAtN2ExZC00NTkwLWFhOTktMzNiOTcyNDRkMDQ4OmMwZTMzOTNkLTcwYTItNGY2Zi05ZDNjLTg1MzBhZjY0ZDU1Mg==',
         'Content-Type': 'application/x-www-form-urlencoded',
         Host: 'customer.bmwgroup.com',
         Accept: 'application/json, text/plain, */*',
