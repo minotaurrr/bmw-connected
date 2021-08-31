@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { RequestParams } from 'src/constants';
 
 export const getBaseURL = (region: Region) => RequestParams[region].base;
@@ -19,3 +20,23 @@ export const getRequestHeaders = (token: string) => ({
   Authorization: `Bearer ${token}`,
   referer: 'https://www.bmw-connecteddrive.de/app/index.html',
 });
+
+export const getRequest = async ({ token, url }: { token: string; url: string }) => {
+  try {
+    const headers = getRequestHeaders(token);
+    const { data } = await axios.get(url, { headers });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const postRequest = async <T>({ token, url, postData }: { token: string; url: string; postData: T }) => {
+  try {
+    const headers = getRequestHeaders(token);
+    const { data } = await axios.post(url, postData, { headers });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

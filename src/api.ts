@@ -1,16 +1,20 @@
 import { Logger } from 'tslog';
 import Authenticator from 'src/authenticator';
-import axios from 'axios';
-import { getRequestHeaders, getVehicleURL } from './utils';
+import { getRequest, getVehicleURL } from './utils';
 
+interface Options {
+  authenticator: Authenticator;
+  log: Logger;
+  debug?: boolean;
+}
 class BMWConnectedDrive {
   public authenticator: Authenticator;
   public authentication?: Authentication;
   public debug;
   public log: Logger;
-  constructor(opts: AuthOptions) {
-    this.authenticator = new Authenticator(opts);
-    this.log = new Logger({ name: 'connected-drive-log', type: 'pretty' });
+  constructor(opts: Options) {
+    this.authenticator = opts.authenticator;
+    this.log = opts.log;
     this.debug = opts.debug;
   }
 
@@ -22,8 +26,7 @@ class BMWConnectedDrive {
   async getVehicles() {
     if (!this.authentication) throw new Error('Missing access token');
     const url = getVehicleURL(this.authenticator.region);
-    const headers = getRequestHeaders(this.authentication.token);
-    const { data } = await axios.get(url, { headers });
+    const data = await getRequest({ token: this.authentication.token, url });
     if (this.debug) this.log.debug(data);
     return data;
   }
