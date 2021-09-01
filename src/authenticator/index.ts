@@ -12,6 +12,7 @@ class Authenticator {
     this.region = region;
     this.username = username;
     this.password = password;
+    console.log(region);
   }
 
   async getAccessToken(): Promise<Authentication> {
